@@ -1,0 +1,67 @@
+h1{
+    height: 100px;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro, .login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    justify-content: space-between;
+}
+
+.login{
+    height: 130px;
+}
+
+.cadastro>input, .cadastro button, .login>input, .login button{
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+    background-color: rgb(142, 142, 248);
+    border: none;
+}
+
+.cadastro>input, .login>input{
+    background-color: rgb(204, 209, 255);
+    width: 290px;       
+}
+
+a{
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.modal-cadastro{
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(167, 163, 163, 0.877) ;
+    top: 151px;
+    left: 204px;
+    height: 200px;
+    width: 350px;
+}
+
+.modal-cadastro h2{
+    font-size: 20px;
+}
+
+.modal-cadastro button{
+    width: 85px;
+    height: 30px;
+    border: none;
+    background-color: rgb(115, 115, 255);
+}
