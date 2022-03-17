@@ -1,9 +1,21 @@
 /*
-email: othoniel@email.com
+email: fla@email.com
 senha: 1989
 */
 
 import { Api } from "./Api.js";
+
+const autenticaçaoAutomatica = await JSON.parse(localStorage.getItem('autenticaçao_BlogM2'))
+
+
+if(autenticaçaoAutomatica){
+    const acessarUsuario  = await Api.getUser(autenticaçaoAutomatica.userId, autenticaçaoAutomatica.token)
+    Api.infoUsuario.autenticaçao = {...autenticaçaoAutomatica}
+
+    window.location.href = "./../../src/paginas/pagina-blog.html"   
+}
+
+
 
 const formLogin = document.querySelector('.login')
 
@@ -17,7 +29,7 @@ formLogin.addEventListener('submit', async function(event){
 
     const response = await Api.logar(usuario)
 
-    if(response.status == 500){
+    if(response.status == 500 || response.status == 400){
         window.alert('E-mail ou senha incorreto')
     }
     else{    
