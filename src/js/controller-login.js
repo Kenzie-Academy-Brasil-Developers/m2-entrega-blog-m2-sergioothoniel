@@ -12,7 +12,7 @@ if(autenticaçaoAutomatica){
     const acessarUsuario  = await Api.getUser(autenticaçaoAutomatica.userId, autenticaçaoAutomatica.token)
     Api.infoUsuario.autenticaçao = {...autenticaçaoAutomatica}
 
-    window.location.href = "./../../src/paginas/pagina-blog.html"   
+    window.location.href = "./../src/paginas/pagina-blog.html"   
 }
 
 
