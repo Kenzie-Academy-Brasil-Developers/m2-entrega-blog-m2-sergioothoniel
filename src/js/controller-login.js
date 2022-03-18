@@ -36,7 +36,7 @@ formLogin.addEventListener('submit', async function(event){
         const armezanarLocal = localStorage.setItem("autenticaçao_BlogM2", JSON.stringify(Api.infoUsuario.autenticaçao))
         const infoUser = await Api.getUser(Api.infoUsuario.autenticaçao.userId, Api.infoUsuario.autenticaçao.token)
 
-        window.location.href = "./../../src/paginas/pagina-blog.html"
+        window.location.href = "./src/paginas/pagina-blog.html"
     }
 
         
