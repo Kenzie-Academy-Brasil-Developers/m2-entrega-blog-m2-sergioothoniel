@@ -38,7 +38,7 @@ modal.addEventListener('click', (event)=>{
     if(event.target.tagName === 'BUTTON'){
         modal.style.display = 'none'
 
-        window.location.href = "./../../index-login.html"
+        window.location.href = "./../../index.html"
     }
 })
 

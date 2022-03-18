@@ -4,7 +4,7 @@ import { Post } from "./model-posts.js";
 const autenticaçaoAutomatica = await JSON.parse(localStorage.getItem('autenticaçao_BlogM2'))
 
 if(!autenticaçaoAutomatica){
-    window.location.href = "./../../index-login.html"
+    window.location.href = "./../../index.html"
 }
 
 const acessarUsuario  = await Api.getUser(autenticaçaoAutomatica.userId, autenticaçaoAutomatica.token)
