@@ -17,8 +17,14 @@ formCadastro.addEventListener('submit', async function(event){
     const response = await Api.criarUsuario(novoUsuario)
     console.log(response)
 
-    if(response.status == 400){
-        window.alert('Usuário ou e-mail já existente.')
+    if(response.status == 'error'){
+        if(response.message === "avatarUrl must be a image url"){
+            window.alert('A foto deve ser um URL')
+        }
+        else{
+            window.alert('Usuário ou e-mail já existente.')
+        }
+        
     }
     else{
         modal.style.display = 'flex'               

@@ -1,8 +1,15 @@
+import { Api } from "./Api.js"
+
 export class Post{
     
     constructor(){
+        this.divPost = document.createElement('div')
+        this.divPost.classList.add("listasPosts-divPost")
+        this.divPost.addEventListener('click', this)
         this.informaçoes = {}
     }
+
+    static postSelecionado = {}
 
     renderizarPost(element, elementoPai, idUsuer){
                   
@@ -10,11 +17,8 @@ export class Post{
                 
             const dataFormatada = Post.formatarDataBR(element.createdAt)
 
-            const divPost = document.createElement('div')
-            divPost.classList.add("listasPosts-divPost")
-
             if(element.owner.id === idUsuer){
-                divPost.innerHTML = `
+                this.divPost.innerHTML = `
             <img src=${element.owner.avatarUrl} alt="">
             <div class="listasPosts-divPost-conteudo">
                 <div class="listasPosts-divPost-conteudo-usuario">${element.owner.username}</div>
@@ -28,7 +32,7 @@ export class Post{
             </aside>
             `      
             }else{
-                divPost.innerHTML = `
+                this.divPost.innerHTML = `
             <img src=${element.owner.avatarUrl} alt="">
             <div class="listasPosts-divPost-conteudo">
                 <div class="listasPosts-divPost-conteudo-usuario">${element.owner.username}</div>
@@ -41,7 +45,7 @@ export class Post{
             `      
             }
             
-            elementoPai.appendChild(divPost)          
+            elementoPai.appendChild(this.divPost)          
            
     }
 
@@ -50,6 +54,25 @@ export class Post{
         let dataBR = `${arrayData[2]}/${arrayData[1]}/${arrayData[0]}`
         return dataBR
     }
+
+    async handleEvent(event){
+        
+        Post.postSelecionado = {...this.informaçoes}
+       
+        if(event.target.classList.value === 'botaoEditar'){
+            const divModalEdiçao = document.querySelector('.modal-ediçao')
+            divModalEdiçao.style.display = 'flex' 
+        }
+        else if(event.target.classList.value === 'botaoApagar'){
+
+            const response = await Api.deletarPost(Api.infoUsuario.autenticaçao.token, this.informaçoes.id)
+            console.log(response)
+            
+            document.location.reload(true)
+        }
+               
+    }
+
 }
 
 /*<div class="listasPosts-divPost">

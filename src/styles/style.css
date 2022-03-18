@@ -250,3 +250,55 @@ main{
 .botaoEditar:hover, .botaoApagar:hover{
     cursor: pointer;
 }
+
+.modal-ediçao{
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(192, 192, 192, 0.877) ;
+    top: 151px;
+    left: 204px;
+    height: 200px;
+    width: 450px;
+}
+
+.modal-ediçao textarea{
+    background-color: rgba(192, 192, 192, 0.308) ;
+    width: 350px;
+    height: 180px;
+}
+
+.modal-ediçao button{
+    width: 50px;
+    height: 25px;
+    background: #EDBC64;
+    border-radius: 5px;
+    color: #FFFF;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.modal-ediçao-botoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 176px;
+    align-items: center;
+}
+
+#fechar{
+    width: 25px;
+    color: black;
+    background-color: white;
+}
+
+.carregarMaisPosts{
+    margin: 30px 0 20px 0;
+    border: none;
+    background-color: #6495ED;
+    color: white;
+    border-radius: 20px;
+    height: 30px;
+    width: 120px;
+}

@@ -7,8 +7,6 @@ export class Api{
         informaçoes:{}
     }
     
-    static listaDePosts = {}
-
     static async criarUsuario(data){
 
         const response = await fetch("https://api-blog-m2.herokuapp.com/user/register", {
@@ -20,7 +18,7 @@ export class Api{
             "body": JSON.stringify(data)
         })
                 
-        return response
+        return response.json()
     }
 
     static async logar(data){
@@ -57,23 +55,6 @@ export class Api{
         return response               
     }
 
-    static async criarPost(token, texto){
-
-        const response = await fetch("https://api-blog-m2.herokuapp.com/post", {
-            "method": "POST",
-            "headers": {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-                        },
-            "body": {
-                "content": texto
-                    }
-                                    
-        })
-
-        return response         
-    }
-
     static async listarPostsPorPagina(token, pagina){
 
         const response = await fetch(`https://api-blog-m2.herokuapp.com/post?page=${pagina}`, {
@@ -97,12 +78,54 @@ export class Api{
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
                        },
-            "body": {
+            "body": JSON.stringify({
                 "content": conteudo
-            }
-                                                
+            })                                                
+        })
+
+        const responseData = await response.json()   
+
+        return responseData
+    }
+
+    static async atualizarPost(token, conteudo, idPost){
+
+        const response = await fetch("https://api-blog-m2.herokuapp.com/post/"+idPost, {
+            "method": "PATCH",
+            "headers": {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+                       },
+            "body": JSON.stringify({
+                "newContent": conteudo
+            })                                                
         })
 
         return response
     }
+
+    static async deletarPost(token, idPost){
+
+        const response = await fetch("https://api-blog-m2.herokuapp.com/post/"+idPost, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Bearer ${token}`                
+                       },                              
+        })
+
+        return response
+    }
+
+    static async listarUmPost(token, idPost){
+
+        const response = await fetch("https://api-blog-m2.herokuapp.com/post/"+idPost, {
+            "method": "GET",
+            "headers": {
+                "Authorization": `Bearer ${token}`                
+                       },                                
+        })
+
+        return response.json()
+    }
+    
 }
